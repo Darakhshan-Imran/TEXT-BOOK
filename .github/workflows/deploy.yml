@@ -4,16 +4,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./docusaurus-course-book
 
     steps:
       - name: Checkout
@@ -24,15 +18,17 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: docusaurus-course-book/package-lock.json
 
       - name: Install dependencies
+        working-directory: ./docusaurus-course-book
         run: npm ci
 
       - name: Build
+        working-directory: ./docusaurus-course-book
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
