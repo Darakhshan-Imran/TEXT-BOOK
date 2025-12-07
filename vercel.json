@@ -1,0 +1,5 @@
+{
+  "root": "docusaurus-course-book",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build"
+}
