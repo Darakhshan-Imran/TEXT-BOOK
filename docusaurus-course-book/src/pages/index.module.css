@@ -1,0 +1,250 @@
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buttonPrimary {
+  background-color: white;
+  color: #667eea;
+  border-color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.buttonPrimary:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.buttonSecondary {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  border-width: 2px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.buttonSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Features Section */
+.featuresSection {
+  padding: 5rem 2rem;
+  background-color: #f9fafb;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #1f2937;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.featureCard {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.featureCard h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  color: #1f2937;
+}
+
+.featureCard p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Curriculum Section */
+.curriculumSection {
+  padding: 5rem 2rem;
+  background-color: white;
+}
+
+.curriculumGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.part {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+.partTitle {
+  color: #667eea;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+}
+
+.chapters {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapters li {
+  padding: 0.7rem 0;
+  color: #4b5563;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  font-size: 0.95rem;
+}
+
+.chapters li:last-child {
+  border-bottom: none;
+}
+
+.curriculumCTA {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Audience Section */
+.audienceSection {
+  padding: 5rem 2rem;
+  background-color: #f9fafb;
+}
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.audienceCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-top: 3px solid #667eea;
+}
+
+.audienceTitle {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.audienceCard p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+}
+
+.ctaSubtext {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .curriculumGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .audienceGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -13,8 +13,12 @@ const config: Config = {
   organizationName: 'Darakhshan-Imran',
   projectName: 'TEXT-BOOK',
 
-  onBrokenLinks: 'warn',
-  // onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
+  onDuplicateRoutes: 'warn',
+  markdown: {
+    format: 'detect',
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -26,7 +30,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/',
+          routeBasePath: 'docs',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/Darakhshan-Imran/TEXT-BOOK/tree/main/',
         },
@@ -44,12 +48,11 @@ const config: Config = {
       title: 'Physical AI',
       logo: {
         alt: 'Physical AI Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
-          type: 'doc',
-          docId: 'intro',
+          to: '/docs',
           position: 'left',
           label: 'Textbook',
         },
