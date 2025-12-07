@@ -16,6 +16,7 @@ const config: Config = {
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'ignore',
   onDuplicateRoutes: 'warn',
+  onBrokenAnchors: 'ignore',
   markdown: {
     format: 'detect',
   },
