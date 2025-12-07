@@ -7,9 +7,7 @@ const config: Config = {
   tagline: 'A Comprehensive Guide to Embodied Intelligence',
   favicon: 'img/favicon.ico',
 
-  url: process.env.DEPLOYMENT_ENV === 'vercel'
-      ? 'https://text-book-fawn.vercel.app'
-      : 'https://Darakhshan-Imran.github.io',
+  url: 'https://text-book-git-main-darakhshan-imrans-projects.vercel.app/',
   baseUrl: '/',
 
   organizationName: 'Darakhshan-Imran',
@@ -28,7 +26,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/Darakhshan-Imran/TEXT-BOOK/tree/main/',
         },
