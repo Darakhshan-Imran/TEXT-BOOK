@@ -7,8 +7,8 @@ const config: Config = {
   tagline: 'A Comprehensive Guide to Embodied Intelligence',
   favicon: 'img/favicon.ico',
 
-  url: 'https://text-book-fawn.vercel.app/',
-  baseUrl: '/',
+  url: 'https://Darakhshan-Imran.github.io',
+  baseUrl: '/TEXT-BOOK/',
 
   organizationName: 'Darakhshan-Imran',
   projectName: 'TEXT-BOOK',
