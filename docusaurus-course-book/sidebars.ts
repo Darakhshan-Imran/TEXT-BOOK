@@ -6,147 +6,80 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Part I: Foundations',
+      link: {
+        type: 'generated-index',
+      },
       items: [
         'part-1-foundations/chapter-01-embodied-intelligence',
         'part-1-foundations/chapter-02-ecosystem',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Part II: ROS 2 & Python',
+      link: {
+        type: 'generated-index',
+      },
+      items: [
+        'part-2-ros2/chapter-03-architecture',
+        'part-2-ros2/chapter-04-python',
+        'part-2-ros2/chapter-05-urdf',
+        'part-2-ros2/chapter-06-launch',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Part III: Simulation',
+      link: {
+        type: 'generated-index',
+      },
+      items: [
+        'part-3-simulation/chapter-07-gazebo',
+        'part-3-simulation/chapter-08-sensor-simulation',
+        'part-3-simulation/chapter-09-unity-visualization',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Part IV: Isaac',
+      link: {
+        type: 'generated-index',
+      },
+      items: [
+        'part-4-isaac/chapter-10-isaac-ecosystem',
+        'part-4-isaac/chapter-11-isaac-sim',
+        'part-4-isaac/chapter-12-isaac-ros-perception',
+        'part-4-isaac/chapter-13-navigation-nav2',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Part V: VLA',
+      link: {
+        type: 'generated-index',
+      },
+      items: [
+        'part-5-vla/chapter-14-humanoid-kinematics',
+        'part-5-vla/chapter-15-manipulation-grasping',
+        'part-5-vla/chapter-16-voice-action-whisper',
+        'part-5-vla/chapter-17-llms-robot-brains',
+        'part-5-vla/chapter-18-multi-modal-interaction',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Part VI: Deployment',
+      link: {
+        type: 'generated-index',
+      },
+      items: [
+        'part-6-deployment/chapter-19-capstone-project',
+        'part-6-deployment/chapter-20-edge-deployment',
+        'part-6-deployment/chapter-21-physical-ai-lab',
+        'part-6-deployment/chapter-22-future-physical-ai',
       ],
     },
   ],
 };
 
 export default sidebars;
-    // Chapters will be added as we create them
-
-
-
-/////////////////////////////////////////////////////////
-// import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
-
-// const sidebars: SidebarsConfig = {
-//   tutorialSidebar: [
-//     'intro',
-//     {
-//       type: 'category',
-//       label: 'Part I: Foundations',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'part-1-foundations/chapter-01-embodied-intelligence',
-//         'part-1-foundations/chapter-02-ecosystem',
-//       ],
-//     },
-//     {
-//       type: 'category',
-//       label: 'Part II: ROS 2',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'part-2-ros2/chapter-03-architecture',
-//         'part-2-ros2/chapter-04-python',
-//         'part-2-ros2/chapter-05-urdf',
-//         'part-2-ros2/chapter-06-launch',
-//       ],
-//     },
-//     {
-//       type: 'category',
-//       label: 'Part III: Simulation',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'part-3-simulation/chapter-07-gazebo',
-//         'part-3-simulation/chapter-08-sensors',
-//         'part-3-simulation/chapter-09-unity',
-//       ],
-//     },
-//     {
-//       type: 'category',
-//       label: 'Part IV: NVIDIA Isaac',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'part-4-isaac/chapter-10-overview',
-//         'part-4-isaac/chapter-11-sim',
-//         'part-4-isaac/chapter-12-ros',
-//         'part-4-isaac/chapter-13-nav2',
-//       ],
-//     },
-//     {
-//       type: 'category',
-//       label: 'Part V: VLA',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'part-5-vla/chapter-14-kinematics',
-//         'part-5-vla/chapter-15-manipulation',
-//         'part-5-vla/chapter-16-whisper',
-//         'part-5-vla/chapter-17-llms',
-//         'part-5-vla/chapter-18-multimodal',
-//       ],
-//     },
-//     {
-//       type: 'category',
-//       label: 'Part VI: Deployment',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'part-6-deployment/chapter-19-capstone',
-//         'part-6-deployment/chapter-20-edge',
-//         'part-6-deployment/chapter-21-lab',
-//         'part-6-deployment/chapter-22-future',
-//       ],
-//     },
-//     {
-//       type: 'category',
-//       label: 'Appendix',
-//       link: {
-//         type: 'generated-index',
-//       },
-//       items: [
-//         'appendix/hardware-guide',
-//         'appendix/resources',
-//       ],
-//     },
-//   ],
-// };
-
-// export default sidebars;
-
-///////////////////////////////////////////////////////////
-
-// // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
-// /**
-//  * Creating a sidebar enables you to:
-//  - create an ordered group of docs
-//  - render a sidebar for each doc of that group
-//  - provide next/previous navigation
-
-//  The sidebars can be generated from the filesystem, or explicitly defined here.
-
-//  Create as many sidebars as you want.
-//  */
-// const sidebars: SidebarsConfig = {
-//   // By default, Docusaurus generates a sidebar from the docs folder structure
-//   tutorialSidebar: [{type: 'autogenerated', dirName: '.'}],
-
-//   // But you can create a sidebar manually
-//   /*
-//   tutorialSidebar: [
-//     'intro',
-//     'hello',
-//     {
-//       type: 'category',
-//       label: 'Tutorial',
-//       items: ['tutorial-basics/create-a-document'],
-//     },
-//   ],
-//    */
-// };
-
-// export default sidebars;
