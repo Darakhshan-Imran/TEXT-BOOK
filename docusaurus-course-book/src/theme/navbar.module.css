@@ -1,0 +1,39 @@
+/* Simple navbar styles for the custom Navbar component */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.titleLink {
+  text-decoration: none;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--ifm-color-emphasis-700);
+}

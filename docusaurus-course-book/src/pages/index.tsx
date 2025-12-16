@@ -6,7 +6,7 @@ import Heading from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './index.module.css';
 
-export default function Home(): React.ReactNode {
+export default function Home(): ReactNode {
   return (
     <Layout
       title="Physical AI & Humanoid Robotics Textbook"
@@ -24,8 +24,8 @@ export default function Home(): React.ReactNode {
             <div className={styles.heroButtons}>
               <Link
                 className={clsx('button button--lg', styles.buttonPrimary)}
-                to="/docs">
-                Start Learning
+                to="/auth">
+                Get Started
               </Link>
               <Link
                 className={clsx('button button--lg', styles.buttonSecondary)}
@@ -152,7 +152,7 @@ export default function Home(): React.ReactNode {
             <div className={styles.curriculumCTA}>
               <Link
                 className={clsx('button button--lg', styles.buttonPrimary)}
-                to="/docs/part-1-foundations/chapter-01-embodied-intelligence">
+                to="/auth">
                 Begin with Part 1: Foundations
               </Link>
             </div>
@@ -208,7 +208,7 @@ export default function Home(): React.ReactNode {
             </p>
             <Link
               className={clsx('button button--lg', styles.buttonPrimary)}
-              to="/docs">
+              to="/auth">
               Get Started Now
             </Link>
           </div>
