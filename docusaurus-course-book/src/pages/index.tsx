@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {ReactNode} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './index.module.css';
+import { useAuth } from '@site/src/auth/auth-context';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-export default function Home(): React.ReactNode {
+export default function Home(): ReactNode {
+  const { user, isLoading } = useAuth();
+  const authUrl = useBaseUrl('/auth');
+  const docsUrl = useBaseUrl('/docs');
+
+  // Determine where "Get Started" should redirect
+  const getStartedUrl = user ? docsUrl : authUrl;
+  const getStartedLabel = user ? 'Go to Textbook' : 'Get Started';
+
   return (
     <Layout
       title="Physical AI & Humanoid Robotics Textbook"
@@ -24,8 +34,8 @@ export default function Home(): React.ReactNode {
             <div className={styles.heroButtons}>
               <Link
                 className={clsx('button button--lg', styles.buttonPrimary)}
-                to="/docs">
-                Start Learning
+                to={getStartedUrl}>
+                {getStartedLabel}
               </Link>
               <Link
                 className={clsx('button button--lg', styles.buttonSecondary)}
@@ -152,8 +162,8 @@ export default function Home(): React.ReactNode {
             <div className={styles.curriculumCTA}>
               <Link
                 className={clsx('button button--lg', styles.buttonPrimary)}
-                to="/docs/part-1-foundations/chapter-01-embodied-intelligence">
-                Begin with Part 1: Foundations
+                to={getStartedUrl}>
+                {user ? 'Begin with Part 1: Foundations' : 'Login to Start Learning'}
               </Link>
             </div>
           </div>
@@ -208,8 +218,8 @@ export default function Home(): React.ReactNode {
             </p>
             <Link
               className={clsx('button button--lg', styles.buttonPrimary)}
-              to="/docs">
-              Get Started Now
+              to={getStartedUrl}>
+              {user ? 'Continue Learning' : 'Get Started Now'}
             </Link>
           </div>
         </section>
