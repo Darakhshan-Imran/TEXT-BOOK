@@ -11,8 +11,8 @@ export const authConfig = {
   },
 
   // Backend API URL - hardcoded for browser compatibility
-  // NOTE: backend auth server runs on port 8001 in this workspace
-  baseUrl: 'http://127.0.0.1:8001',
+  // Backend API URL - use port 8000 per request
+  baseUrl: 'http://127.0.0.1:8000',
 
   // Token configuration
   token: {

@@ -21,6 +21,7 @@ const config: Config = {
     locales: ['en'],
   },
 
+
   presets: [
     [
       'classic',
@@ -48,10 +49,12 @@ const config: Config = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'intro',
+          type: 'custom-textbookNavbarItem',
           position: 'left',
-          label: 'Textbook',
+        },
+        {
+          type: 'custom-authNavbarItem',
+          position: 'right',
         },
         {
           href: 'https://github.com/Darakhshan-Imran/TEXT-BOOK',
