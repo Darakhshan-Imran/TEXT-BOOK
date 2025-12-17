@@ -1,0 +1,143 @@
+openapi: 3.0.3
+info:
+  title: RAG Chatbot API
+  description: API for the Physical AI & Humanoid Robotics course chatbot
+  version: 1.0.0
+
+servers:
+  - url: https://textbook-chatbot-api.onrender.com
+    description: Production server
+  - url: http://localhost:8080
+    description: Local development
+
+security:
+  - bearerAuth: []
+
+paths:
+  /chat/query:
+    post:
+      summary: Send a question to the chatbot
+      description: Processes a user question using RAG and returns an AI-generated response
+      operationId: chatQuery
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '401':
+          description: Unauthorized - Invalid or missing JWT token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /chat/health:
+    get:
+      summary: Health check endpoint
+      description: Check if the chatbot service is running
+      operationId: healthCheck
+      tags:
+        - Health
+      security: []
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+                  qdrant:
+                    type: string
+                    example: connected
+                  cohere:
+                    type: string
+                    example: connected
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - question
+      properties:
+        question:
+          type: string
+          minLength: 3
+          maxLength: 500
+          description: The user's question about course content
+          example: "What is ROS 2 and how does it work?"
+        session_id:
+          type: string
+          description: Optional session ID for conversation continuity
+          example: "550e8400-e29b-41d4-a716-446655440000"
+
+    ChatResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: AI-generated response based on course content
+          example: "ROS 2 (Robot Operating System 2) is a flexible framework for writing robot software..."
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
+          description: References to course content used in the response
+        session_id:
+          type: string
+          description: Session ID for conversation continuity
+          example: "550e8400-e29b-41d4-a716-446655440000"
+
+    Source:
+      type: object
+      properties:
+        chapter:
+          type: string
+          example: "Chapter 3: ROS 2 Architecture Fundamentals"
+        section:
+          type: string
+          example: "Core Concepts"
+        relevance:
+          type: number
+          format: float
+          example: 0.92
+
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Error message
+          example: "Invalid or expired token"
