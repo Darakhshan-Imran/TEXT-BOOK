@@ -10,9 +10,10 @@ export const authConfig = {
     session: '/auth/profile', // This should match your existing FastAPI endpoint
   },
 
-  // Backend API URL - hardcoded for browser compatibility
-  // Backend API URL - use port 8000 per request
-  baseUrl: 'http://127.0.0.1:8000',
+  // Backend API URL - auto-detect environment
+  baseUrl: typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? 'http://127.0.0.1:8000'  // Local development
+    : 'https://textbook-auth-api.onrender.com',  // Production (Render)
 
   // Token configuration
   token: {
