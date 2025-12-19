@@ -2,8 +2,8 @@
  * Chatbot configuration settings.
  */
 
-// Backend API URL - update after deploying to Render
-const CHATBOT_API_URL_PROD = 'https://your-chatbot-api.onrender.com';
+// Backend API URL - Railway deployment
+const CHATBOT_API_URL_PROD = 'https://text-book-production.up.railway.app';
 const CHATBOT_API_URL_DEV = 'http://localhost:8080';
 
 // Determine if we're in production (GitHub Pages)
