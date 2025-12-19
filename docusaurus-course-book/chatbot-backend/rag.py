@@ -25,7 +25,7 @@ QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 COLLECTION_NAME = "course_content"
 EMBEDDING_MODEL = "embed-english-v3.0"
-GENERATION_MODEL = "command-r-plus"
+GENERATION_MODEL = "command-r"  # Updated: command-r-plus was deprecated
 TOP_K = 5  # Number of results to retrieve
 
 
@@ -86,18 +86,34 @@ def search_qdrant(query_vector: List[float], top_k: int = TOP_K) -> List[Dict[st
     Returns:
         List of search results with content and metadata
     """
+    from qdrant_client.models import ScoredPoint
+
     client = get_qdrant_client()
 
-    results = client.search(
-        collection_name=COLLECTION_NAME,
-        query_vector=query_vector,
-        limit=top_k,
-        with_payload=True
-    )
+    # Use query_points for newer qdrant-client versions
+    try:
+        # Try the newer API first (qdrant-client >= 1.7.1)
+        results = client.query_points(
+            collection_name=COLLECTION_NAME,
+            query=query_vector,
+            limit=top_k,
+            with_payload=True
+        )
+        # query_points returns a QueryResponse object with .points attribute
+        points = results.points
+    except AttributeError:
+        # Fallback to older API
+        results = client.search(
+            collection_name=COLLECTION_NAME,
+            query_vector=query_vector,
+            limit=top_k,
+            with_payload=True
+        )
+        points = results
 
     # Format results
     formatted_results = []
-    for result in results:
+    for result in points:
         formatted_results.append({
             "content": result.payload.get("content", ""),
             "source": result.payload.get("source", ""),
