@@ -14,9 +14,21 @@ from dotenv import load_dotenv
 env_path = Path(__file__).resolve().parent.parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
-# Import OpenAI Agents SDK with LiteLLM
-from agents import Agent, Runner, function_tool
-from agents.extensions.models.litellm_model import LitellmModel
+# Try to import OpenAI Agents SDK with LiteLLM
+AGENT_AVAILABLE = False
+try:
+    from agents import Agent, Runner, function_tool
+    from agents.models.litellm import LiteLLMModel
+    AGENT_AVAILABLE = True
+except ImportError:
+    try:
+        from agents import Agent, Runner, function_tool
+        from agents.extensions.models.litellm_model import LitellmModel as LiteLLMModel
+        AGENT_AVAILABLE = True
+    except ImportError:
+        # Agent SDK not available, will use RAG fallback
+        AGENT_AVAILABLE = False
+        print("OpenAI Agents SDK with LiteLLM not available, using direct RAG")
 
 # Import RAG functions
 from rag import query_rag, embed_query, search_qdrant, assemble_context
@@ -25,8 +37,7 @@ from rag import query_rag, embed_query, search_qdrant, assemble_context
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 
 
-@function_tool
-def search_course_content(query: str) -> str:
+def search_course_content_func(query: str) -> str:
     """
     Search the Physical AI & Humanoid Robotics course content for relevant information.
 
@@ -52,15 +63,25 @@ def search_course_content(query: str) -> str:
         return f"Error searching course content: {str(e)}"
 
 
-def create_course_agent() -> Agent:
+# Create decorated version only if agent SDK is available
+if AGENT_AVAILABLE:
+    search_course_content = function_tool(search_course_content_func)
+else:
+    search_course_content = search_course_content_func
+
+
+def create_course_agent():
     """
     Create an AI agent for the Physical AI & Humanoid Robotics course.
 
     Returns:
-        Configured Agent instance with RAG tool
+        Configured Agent instance with RAG tool, or None if not available
     """
+    if not AGENT_AVAILABLE:
+        return None
+
     # Create LiteLLM model pointing to Cohere
-    model = LitellmModel(
+    model = LiteLLMModel(
         model="cohere/command-r-plus",
         api_key=COHERE_API_KEY
     )
@@ -104,9 +125,30 @@ async def run_agent_query(
     Returns:
         Dictionary with answer and metadata
     """
+    # If agent SDK not available, use direct RAG
+    if not AGENT_AVAILABLE:
+        print("Agent SDK not available, using direct RAG")
+        try:
+            rag_result = query_rag(question, chat_history)
+            return {
+                "answer": rag_result["answer"],
+                "sources": rag_result.get("sources", []),
+                "success": True,
+                "fallback": True
+            }
+        except Exception as rag_error:
+            return {
+                "answer": f"I apologize, but I encountered an error processing your question. Please try again.",
+                "success": False,
+                "error": str(rag_error)
+            }
+
     try:
         # Create agent
         agent = create_course_agent()
+
+        if agent is None:
+            raise Exception("Agent creation failed")
 
         # Build context from chat history if available
         context_prompt = question
