@@ -25,7 +25,7 @@ QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 COLLECTION_NAME = "course_content"
 EMBEDDING_MODEL = "embed-english-v3.0"
-GENERATION_MODEL = "command-r"  # Updated: command-r-plus was deprecated
+GENERATION_MODEL = "command-r-08-2024"  # Current available model
 TOP_K = 5  # Number of results to retrieve
 
 

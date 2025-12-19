@@ -82,7 +82,7 @@ def create_course_agent():
 
     # Create LiteLLM model pointing to Cohere
     model = LiteLLMModel(
-        model="cohere/command-r",  # Updated: command-r-plus was deprecated
+        model="cohere/command-r-08-2024",  # Current available model
         api_key=COHERE_API_KEY
     )
 
