@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ChatMessage from './ChatMessage';
 import { useChatbot } from './useChatbot';
 import './chatbot.css';
@@ -6,17 +6,56 @@ import './chatbot.css';
 interface ChatPanelProps {
   isOpen: boolean;
   onClose: () => void;
+  onMinimize: () => void;
+  userName?: string;
 }
+
+/**
+ * Play notification sound when bot responds.
+ */
+const playNotificationSound = () => {
+  try {
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.frequency.value = 800;
+    oscillator.type = 'sine';
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.3);
+  } catch (e) {
+    // Audio not supported or blocked
+    console.log('Audio notification not available');
+  }
+};
 
 /**
  * Expandable chat panel component.
  * Contains message history, input field, and controls.
  */
-const ChatPanel: React.FC<ChatPanelProps> = ({ isOpen, onClose }) => {
+const ChatPanel: React.FC<ChatPanelProps> = ({ isOpen, onClose, onMinimize, userName = 'Student' }) => {
   const [inputValue, setInputValue] = useState('');
+  const [prevMessageCount, setPrevMessageCount] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { messages, isLoading, error, sendMessage, clearMessages, clearError } = useChatbot();
+
+  // Play sound when new assistant message arrives
+  useEffect(() => {
+    if (messages.length > prevMessageCount) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage?.role === 'assistant') {
+        playNotificationSound();
+      }
+    }
+    setPrevMessageCount(messages.length);
+  }, [messages, prevMessageCount]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -71,6 +110,16 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ isOpen, onClose }) => {
           </button>
           <button
             className="chatbot-panel-action"
+            onClick={onMinimize}
+            title="Minimize chat"
+            aria-label="Minimize chat"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+          </button>
+          <button
+            className="chatbot-panel-action"
             onClick={onClose}
             title="Close chat"
             aria-label="Close chat"
@@ -92,7 +141,8 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ isOpen, onClose }) => {
                 <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z" />
               </svg>
             </div>
-            <h3>Welcome to Course Assistant</h3>
+            <h3>Hello, {userName}!</h3>
+            <p className="chatbot-welcome-subtitle">Welcome to your AI Course Assistant</p>
             <p>Ask me anything about Physical AI & Humanoid Robotics!</p>
             <div className="chatbot-suggestions">
               <button onClick={() => sendMessage('What is ROS 2?')}>What is ROS 2?</button>
