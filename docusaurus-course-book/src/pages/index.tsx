@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type {ReactNode} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -8,14 +8,34 @@ import styles from './index.module.css';
 import { useAuth } from '@site/src/auth/auth-context';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+const ArrowUpIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7" />
+  </svg>
+);
+
 export default function Home(): ReactNode {
   const { user, isLoading } = useAuth();
   const authUrl = useBaseUrl('/auth');
   const docsUrl = useBaseUrl('/docs');
+  const robotImg = useBaseUrl('/img/robot-hero.svg');
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Determine where "Get Started" should redirect
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Determine where the primary CTA should redirect and its label
   const getStartedUrl = user ? docsUrl : authUrl;
-  const getStartedLabel = user ? 'Go to Textbook' : 'Get Started';
+  const getStartedLabel = user ? 'Continue Learning' : 'Start Learning';
 
   return (
     <Layout
@@ -25,23 +45,30 @@ export default function Home(): ReactNode {
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroContainer}>
-            <Heading as="h1" className={styles.heroTitle}>
-              Physical AI & Humanoid Robotics
-            </Heading>
-            <p className={styles.heroSubtitle}>
-              Master the complete landscape of embodied intelligence—from foundational concepts to production-ready systems
-            </p>
-            <div className={styles.heroButtons}>
-              <Link
-                className={clsx('button button--lg', styles.buttonPrimary)}
-                to={getStartedUrl}>
-                {getStartedLabel}
-              </Link>
-              <Link
-                className={clsx('button button--lg', styles.buttonSecondary)}
-                to="#curriculum">
-                Explore Curriculum
-              </Link>
+            <div className={styles.heroContent}>
+              <div className={styles.heroLeft}>
+                <Heading as="h1" className={styles.heroTitle}>
+                  Discover the World of Physical AI & Humanoid Robotics
+                </Heading>
+                <p className={styles.heroSubtitle}>
+                  Explore embodied intelligence—from basics to real-world robots.
+                </p>
+                <div className={styles.heroButtons}>
+                  <Link
+                    className={clsx('button button--lg', styles.buttonPrimary)}
+                    to={getStartedUrl}>
+                    {getStartedLabel}
+                  </Link>
+                  <Link
+                    className={clsx('button button--lg', styles.buttonSecondary)}
+                    to="#curriculum">
+                    Explore Curriculum
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.heroIllustrationContainer}>
+                <img src={robotImg} alt="Humanoid illustration" className={styles.heroIllustration} />
+              </div>
             </div>
           </div>
         </section>
@@ -224,6 +251,15 @@ export default function Home(): ReactNode {
           </div>
         </section>
       </main>
+
+      {/* Scroll to Top Button */}
+      <button
+        className={clsx(styles.scrollToTop, showScrollTop && styles.visible)}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        <ArrowUpIcon />
+      </button>
     </Layout>
   );
 }

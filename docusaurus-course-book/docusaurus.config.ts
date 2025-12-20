@@ -32,9 +32,9 @@ const config: Config = {
           editUrl: 'https://github.com/Darakhshan-Imran/TEXT-BOOK/tree/main/',
         },
         // blog: false, // Disable blog
-        // theme: {
-        //   customCss: './src/css/custom.css',
-        // },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -45,7 +45,8 @@ const config: Config = {
       title: 'Physical AI & Humanoid Robotics',
       logo: {
         alt: 'Physical AI Logo',
-        src: 'img/logo.png',
+        src: 'img/robo.png',
+        style: { height: '55px' },
       },
       items: [
         {

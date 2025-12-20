@@ -1,65 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Poppins:wght@600;700&display=swap');
+
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: transparent;
+  color: #0f172a;
   padding: 6rem 2rem;
-  text-align: center;
+  text-align: left;
   position: relative;
   overflow: hidden;
+  font-family: Poppins, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 .heroContainer {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  line-height: 1.1;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.12;
+  font-family: Poppins, Inter, system-ui, -apple-system, "Segoe UI", Roboto;
 }
 
 .heroSubtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.95;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.5;
+  color: #334155;
 }
 
 .heroButtons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .buttonPrimary {
-  background-color: white;
-  color: #667eea;
-  border-color: white;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  background-color: #FAB206;
+  color: #0f172a;
+  border-color: transparent;
+  font-weight: 700;
+  transition: all 0.22s ease;
+  border-radius: 999px;
+  padding: 0.9rem 1.6rem;
+  box-shadow: 0 8px 22px rgba(250,178,6,0.12);
 }
 
 .buttonPrimary:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #e6a704;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(250,178,6,0.14);
+  color: #0f172a !important;
+}
+
+.buttonPrimary:focus,
+.buttonPrimary:active {
+  color: #0f172a !important;
 }
 
 .buttonSecondary {
   background-color: transparent;
-  color: white;
-  border-color: white;
-  border-width: 2px;
+  color: #0f172a;
+  border: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: color 0.18s ease, transform 0.18s ease;
 }
 
 .buttonSecondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  background-color: transparent;
+  transform: translateY(0);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: #4f46e5 !important;
 }
+
+/* Hero layout: left text, right illustration */
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.heroLeft {
+  flex: 1 1 560px;
+}
+
+.heroIllustrationContainer {
+  flex: 0 0 420px;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: transparent;
+  border-radius: 18px;
+  padding: 0.5rem;
+  box-shadow: none;
+}
+
+.heroIllustration {
+  width: 100%;
+  height: auto;
+  max-width: 460px;
+  display: block;
+  transform: translateY(-6px);
+}
+
+/* Subtle abstract shapes in the background */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(99,102,241,0.06) 0px, transparent 120px), radial-gradient(circle at 90% 80%, rgba(118,75,162,0.05) 0px, transparent 140px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle bottom shadow using brand color */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  /* solid at the top (near the hero), fading downward */
+  background: linear-gradient(to bottom, rgba(250,178,6,0.20) 0%, rgba(250,178,6,0.10) 35%, rgba(250,178,6,0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContainer > * { position: relative; z-index: 1; }
 
 .container {
   max-width: 1200px;
@@ -76,6 +153,7 @@
 .sectionTitle {
   font-size: 2.5rem;
   font-weight: 800;
+  font-family: 'Nunito', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   text-align: center;
   margin-bottom: 3rem;
   color: #1f2937;
@@ -92,14 +170,14 @@
   background: white;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(250, 178, 6, 0.08);
   transition: all 0.3s ease;
   border: 1px solid #e5e7eb;
 }
 
 .featureCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 24px rgba(250, 178, 6, 0.14);
 }
 
 .featureIcon {
@@ -113,6 +191,7 @@
   font-weight: 700;
   margin: 1rem 0;
   color: #1f2937;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto;
 }
 
 .featureCard p {
@@ -145,6 +224,7 @@
   color: #667eea;
   font-size: 1.3rem;
   font-weight: 700;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto;
   margin: 0 0 1.5rem 0;
 }
 
@@ -195,6 +275,7 @@
   font-size: 1.1rem;
   color: #1f2937;
   margin: 0 0 1rem 0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto;
 }
 
 .audienceCard p {
@@ -207,7 +288,8 @@
 /* CTA Section */
 .ctaSection {
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Warm elegant gradient using provided palette */
+  background: linear-gradient(135deg, #FAB206 0%, #FFD110 28%, #FFDA61 62%, #FF6D45 100%);
   color: white;
   text-align: center;
 }
@@ -217,6 +299,103 @@
   margin-bottom: 2rem;
   opacity: 0.95;
 }
+
+/* Footer paragraph color: match heroSubtitle in light mode */
+.ctaSubtext {
+  color: #334155;
+}
+
+.heroContainer > * { position: relative; z-index: 1; }
+
+/* Dark theme: apply across landing page
+   - headings: #FAB206
+   - normal text: white
+   - darker section/card backgrounds with subtle FAB206 accents */
+html[data-theme="dark"] .hero,
+.theme-dark .hero,
+.dark .hero,
+html[data-theme="dark"] .featuresSection,
+.theme-dark .featuresSection,
+.dark .featuresSection,
+html[data-theme="dark"] .curriculumSection,
+.theme-dark .curriculumSection,
+.dark .curriculumSection,
+html[data-theme="dark"] .audienceSection,
+.theme-dark .audienceSection,
+.dark .audienceSection {
+  background-color: #071226;
+  color: #ffffff;
+}
+
+/* Headings use brand color */
+html[data-theme="dark"] .heroTitle,
+.theme-dark .heroTitle,
+.dark .heroTitle,
+html[data-theme="dark"] .sectionTitle,
+.theme-dark .sectionTitle,
+.dark .sectionTitle,
+html[data-theme="dark"] .featureCard h3,
+.theme-dark .featureCard h3,
+.dark .featureCard h3,
+html[data-theme="dark"] .partTitle,
+.theme-dark .partTitle,
+.dark .partTitle,
+html[data-theme="dark"] .audienceTitle,
+.theme-dark .audienceTitle,
+.dark .audienceTitle {
+  color: #FAB206;
+}
+
+/* Body / paragraph text should be white */
+html[data-theme="dark"] p,
+.theme-dark p,
+.dark p,
+html[data-theme="dark"] .featureCard p,
+.theme-dark .featureCard p,
+.dark .featureCard p,
+html[data-theme="dark"] .audienceCard p,
+.theme-dark .audienceCard p,
+.dark .audienceCard p,
+html[data-theme="dark"] .chapters li,
+.theme-dark .chapters li,
+.dark .chapters li {
+  color: #ffffff;
+}
+
+/* Cards */
+html[data-theme="dark"] .featureCard,
+.theme-dark .featureCard,
+.dark .featureCard,
+html[data-theme="dark"] .audienceCard,
+.theme-dark .audienceCard,
+.dark .audienceCard {
+  background: #071226;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 24px rgba(250,178,6,0.04);
+}
+
+html[data-theme="dark"] .part,
+.theme-dark .part,
+.dark .part {
+  background: linear-gradient(135deg, rgba(250,178,6,0.03) 0%, rgba(255,209,16,0.02) 100%);
+  border-left-color: rgba(250,178,6,0.6);
+  box-shadow: 0 8px 24px rgba(250,178,6,0.04);
+}
+
+/* Buttons */
+html[data-theme="dark"] .buttonSecondary,
+.theme-dark .buttonSecondary,
+.dark .buttonSecondary {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .buttonPrimary,
+.theme-dark .buttonPrimary,
+.dark .buttonPrimary {
+  background-color: #FAB206;
+  color: #0f172a;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -247,4 +426,92 @@
   .audienceGrid {
     grid-template-columns: 1fr;
   }
+}
+
+  /* Ensure footer (ctaSection) keeps its light-mode text colors in dark mode */
+  html[data-theme="dark"] .ctaSection .ctaSubtext,
+  .theme-dark .ctaSection .ctaSubtext,
+  .dark .ctaSection .ctaSubtext,
+  html[data-theme="dark"] .ctaSection p,
+  .theme-dark .ctaSection p,
+  .dark .ctaSection p,
+  html[data-theme="dark"] .ctaSection h1,
+  .theme-dark .ctaSection h1,
+  .dark .ctaSection h1,
+  html[data-theme="dark"] .ctaSection h2,
+  .theme-dark .ctaSection h2,
+  .dark .ctaSection h2,
+  html[data-theme="dark"] .ctaSection h3,
+  .theme-dark .ctaSection h3,
+  .dark .ctaSection h3,
+  html[data-theme="dark"] .ctaSection h4,
+  .theme-dark .ctaSection h4,
+  .dark .ctaSection h4,
+  html[data-theme="dark"] .ctaSection h5,
+  .theme-dark .ctaSection h5,
+  .dark .ctaSection h5,
+  html[data-theme="dark"] .ctaSection h6,
+  .theme-dark .ctaSection h6,
+  .dark .ctaSection h6 {
+    color: #334155;
+  }
+
+  /* Preserve the footer gradient/background in dark mode as well */
+  html[data-theme="dark"] .ctaSection,
+  .theme-dark .ctaSection,
+  .dark .ctaSection {
+    background: linear-gradient(135deg, #FAB206 0%, #FFD110 28%, #FFDA61 62%, #FF6D45 100%);
+  }
+
+/* Scroll to Top Button */
+.scrollToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #8B7BB5 0%, #6B5B9A 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(107, 91, 154, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.scrollToTop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scrollToTop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(107, 91, 154, 0.5);
+}
+
+.scrollToTop svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Dark mode */
+html[data-theme="dark"] .scrollToTop,
+.theme-dark .scrollToTop,
+.dark .scrollToTop {
+  background: linear-gradient(135deg, #FAB206 0%, #e6a704 100%);
+  box-shadow: 0 4px 15px rgba(250, 178, 6, 0.4);
+}
+
+html[data-theme="dark"] .scrollToTop:hover,
+.theme-dark .scrollToTop:hover,
+.dark .scrollToTop:hover {
+  box-shadow: 0 6px 20px rgba(250, 178, 6, 0.5);
 }

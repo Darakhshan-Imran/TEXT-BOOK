@@ -6,25 +6,99 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #7C86E5;
+  --ifm-color-primary-dark: #6f78d9;
+  --ifm-color-primary-darker: #615fd0;
+  --ifm-color-primary-darkest: #524cc0;
+  --ifm-color-primary-light: #8f97ee;
+  --ifm-color-primary-lighter: #9aa3f6;
+  --ifm-color-primary-lightest: #b5bbff;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #7C86E5;
+  --ifm-color-primary-dark: #6f78d9;
+  --ifm-color-primary-darker: #615fd0;
+  --ifm-color-primary-darkest: #524cc0;
+  --ifm-color-primary-light: #8f97ee;
+  --ifm-color-primary-lighter: #9aa3f6;
+  --ifm-color-primary-lightest: #b5bbff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Load Poppins and Nunito for consistent heading/navbar typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@600;800&display=swap');
+
+/* Navbar typography: use Poppins for site title and nav links */
+.navbar__brand,
+.navbar__brand .navbar__title,
+.navbar__brand .navbar__logoLink,
+.navbar__items .navbar__link,
+.navbar__item .navbar__link,
+.navbar__items .dropdown__link,
+.navbar__items .menu__link {
+  font-family: 'Poppins', 'Nunito', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important;
+  font-weight: 600 !important;
+}
+
+/* Keep link color inherited (avoid falling back to Roboto-specific styles) */
+.navbar__items .navbar__link,
+.navbar__brand .navbar__title {
+  color: inherit !important;
+}
+
+/* Ensure mobile menu links also use Poppins */
+.menu__link {
+  font-family: 'Poppins', 'Nunito', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial !important;
+}
+
+/* Increase navbar/site-title font sizes and add hover color */
+.navbar__brand .navbar__title {
+  font-size: 1.18rem !important;
+  font-weight: 700 !important;
+}
+
+.navbar__items .navbar__link,
+.navbar__item .navbar__link,
+.menu__link,
+.navbar__brand {
+  font-size: 1.05rem !important;
+}
+
+.navbar__items .navbar__link:hover,
+.navbar__items .navbar__link:focus,
+.menu__link:hover,
+.menu__link:focus,
+.navbar__item .navbar__link:hover {
+  color: #FAB206 !important;
+}
+
+/* Final tweak: slightly reduce navbar font sizes and ensure Poppins used; hover color applies to the brand/title too */
+.navbar__brand .navbar__title {
+  font-size: 1.12rem !important; /* slightly smaller */
+  font-family: 'Poppins', 'Nunito', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial !important;
+  font-weight: 700 !important;
+  transition: color 160ms ease;
+}
+
+.navbar__items .navbar__link,
+.navbar__item .navbar__link,
+.menu__link {
+  font-size: 0.98rem !important; /* slightly smaller */
+  font-family: 'Poppins', 'Nunito', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial !important;
+  transition: color 160ms ease;
+}
+
+/* Hover/focus color for all navbar items including brand/title */
+.navbar__brand .navbar__title:hover,
+.navbar__brand:hover .navbar__title,
+.navbar__items .navbar__link:hover,
+.navbar__items .navbar__link:focus,
+.menu__link:hover,
+.menu__link:focus,
+.navbar__item .navbar__link:hover {
+  color: #FAB206 !important;
 }

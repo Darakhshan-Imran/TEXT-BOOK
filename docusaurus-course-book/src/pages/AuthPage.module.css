@@ -1,46 +1,203 @@
-.auth-form {
-  max-width: 400px;
-  margin: 0 auto;
+.authPageWrapper {
+  min-height: calc(100vh - 50px);
+  background-image: url('/img/auth-form-bg.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+ 
 }
 
-.auth-form .form-control {
+.authCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(107, 91, 154, 0.2);
+  padding: 2.5rem;
+  max-width: 420px;
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 2px solid rgba(139, 123, 181, 0.2);
 }
 
-.auth-form label {
+.authTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #6B5B9A;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.formLabel {
   display: block;
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: #4a4a4a;
+  font-size: 0.9rem;
 }
 
-.auth-form button {
+.formControl {
   width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.formControl:focus {
+  outline: none;
+  border-color: #8B7BB5;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(139, 123, 181, 0.15);
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper .formControl {
+  padding-right: 3rem;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B7BB5;
+  transition: color 0.2s ease;
+}
+
+.eyeButton:hover {
+  color: #6B5B9A;
+}
+
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #8B7BB5 0%, #6B5B9A 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(107, 91, 154, 0.4);
+}
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .alert {
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
 }
 
-.alert--danger {
+.alertDanger {
   color: #721c24;
   background-color: #f8d7da;
-  border-color: #f5c6cb;
+  border: 1px solid #f5c6cb;
 }
 
-.navbar__auth-user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 1rem;
+.switchText {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
-.navbar__user-email {
-  font-size: 0.875rem;
+.switchLink {
+  color: #8B7BB5;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.switchLink:hover {
+  color: #6B5B9A;
+  text-decoration: underline;
+}
+
+/* Dark mode support */
+[data-theme='dark'] .authPageWrapper {
+  background-color: #1b1b1d;
+}
+
+[data-theme='dark'] .authCard {
+  background: rgba(30, 30, 32, 0.95);
+  border-color: rgba(139, 123, 181, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .authTitle {
+  color: #b8a8d9;
+}
+
+[data-theme='dark'] .formLabel {
+  color: #e0e0e0;
+}
+
+[data-theme='dark'] .formControl {
+  background: #2a2a2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+[data-theme='dark'] .formControl:focus {
+  background: #333;
+  border-color: #8B7BB5;
+}
+
+[data-theme='dark'] .switchText {
+  color: #b0b0b0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .authPageWrapper {
+    padding: 1rem;
+  }
+
+  .authCard {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .authTitle {
+    font-size: 1.5rem;
+  }
 }
