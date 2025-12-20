@@ -76,6 +76,26 @@
   background: var(--chatbot-text);
 }
 
+/* Robot image in button */
+.chatbot-button-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+/* Make button larger and transparent when showing robot image */
+.chatbot-button:not(.chatbot-button-open) {
+  width: 160px;
+  height: 160px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.chatbot-button:not(.chatbot-button-open):hover {
+  background: transparent;
+  transform: scale(1.1);
+}
+
 /* ========================================
    Chat Panel
    ======================================== */

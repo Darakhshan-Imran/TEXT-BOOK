@@ -1,4 +1,5 @@
 import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import './chatbot.css';
 
 interface ChatButtonProps {
@@ -8,9 +9,11 @@ interface ChatButtonProps {
 
 /**
  * Floating chat button component (bottom-right corner).
- * Shows a chat icon when closed, X icon when open.
+ * Shows a robot image when closed, X icon when open.
  */
 const ChatButton: React.FC<ChatButtonProps> = ({ onClick, isOpen }) => {
+  const robotImage = useBaseUrl('/img/robo.png');
+
   return (
     <button
       className={`chatbot-button ${isOpen ? 'chatbot-button-open' : ''}`}
@@ -34,19 +37,12 @@ const ChatButton: React.FC<ChatButtonProps> = ({ onClick, isOpen }) => {
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       ) : (
-        // Chat icon
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        </svg>
+        // Robot image
+        <img
+          src={robotImage}
+          alt="AI Assistant"
+          className="chatbot-button-image"
+        />
       )}
     </button>
   );

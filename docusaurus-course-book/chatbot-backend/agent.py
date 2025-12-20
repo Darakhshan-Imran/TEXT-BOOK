@@ -18,17 +18,12 @@ load_dotenv(dotenv_path=env_path)
 AGENT_AVAILABLE = False
 try:
     from agents import Agent, Runner, function_tool
-    from agents.models.litellm import LiteLLMModel
+    from agents.extensions.models.litellm_model import LitellmModel as LiteLLMModel
     AGENT_AVAILABLE = True
 except ImportError:
-    try:
-        from agents import Agent, Runner, function_tool
-        from agents.extensions.models.litellm_model import LitellmModel as LiteLLMModel
-        AGENT_AVAILABLE = True
-    except ImportError:
-        # Agent SDK not available, will use RAG fallback
-        AGENT_AVAILABLE = False
-        print("OpenAI Agents SDK with LiteLLM not available, using direct RAG")
+    # Agent SDK not available, will use RAG fallback
+    AGENT_AVAILABLE = False
+    print("OpenAI Agents SDK with LiteLLM not available, using direct RAG")
 
 # Import RAG functions
 from rag import query_rag, embed_query, search_qdrant, assemble_context
