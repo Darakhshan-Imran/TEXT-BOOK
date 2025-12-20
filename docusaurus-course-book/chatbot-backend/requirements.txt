@@ -1,0 +1,9 @@
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+cohere>=5.11.0
+qdrant-client>=1.7.0
+openai-agents[litellm]>=0.0.3
+litellm>=1.0.0
+pyjwt>=2.8.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.6
