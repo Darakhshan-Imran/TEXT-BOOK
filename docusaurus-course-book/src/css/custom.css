@@ -102,3 +102,11 @@
 .navbar__item .navbar__link:hover {
   color: #FAB206 !important;
 }
+
+/* Remove navbar border/shadow and add padding */
+.navbar {
+  box-shadow: none !important;
+  border-bottom: none !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}

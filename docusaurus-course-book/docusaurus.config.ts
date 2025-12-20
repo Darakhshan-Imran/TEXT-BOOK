@@ -57,11 +57,11 @@ const config: Config = {
           type: 'custom-authNavbarItem',
           position: 'right',
         },
-        {
-          href: 'https://github.com/Darakhshan-Imran/TEXT-BOOK',
-          label: 'GitHub',
-          position: 'right',
-        },
+        // {
+        //   href: 'https://github.com/Darakhshan-Imran/TEXT-BOOK',
+        //   label: 'GitHub',
+        //   position: 'right',
+        // },
       ],
     },
     footer: {
