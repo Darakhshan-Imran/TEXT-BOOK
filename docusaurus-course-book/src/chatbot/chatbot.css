@@ -96,6 +96,47 @@
   transform: scale(1.1);
 }
 
+/* Minimized state with pulse animation */
+.chatbot-button-minimized {
+  animation: chatbot-pulse 2s infinite;
+}
+
+@keyframes chatbot-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Notification badge for minimized state */
+.chatbot-button-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ef4444;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: chatbot-badge-bounce 1s infinite;
+}
+
+@keyframes chatbot-badge-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
 /* ========================================
    Chat Panel
    ======================================== */
@@ -195,10 +236,17 @@
 }
 
 .chatbot-welcome h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   color: var(--chatbot-text);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
+}
+
+.chatbot-welcome-subtitle {
+  margin: 0 0 12px 0;
+  color: var(--chatbot-primary);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .chatbot-welcome p {

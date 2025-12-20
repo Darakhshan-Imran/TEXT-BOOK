@@ -5,21 +5,22 @@ import './chatbot.css';
 interface ChatButtonProps {
   onClick: () => void;
   isOpen: boolean;
+  isMinimized?: boolean;
 }
 
 /**
  * Floating chat button component (bottom-right corner).
  * Shows a robot image when closed, X icon when open.
  */
-const ChatButton: React.FC<ChatButtonProps> = ({ onClick, isOpen }) => {
+const ChatButton: React.FC<ChatButtonProps> = ({ onClick, isOpen, isMinimized = false }) => {
   const robotImage = useBaseUrl('/img/robo.png');
 
   return (
     <button
-      className={`chatbot-button ${isOpen ? 'chatbot-button-open' : ''}`}
+      className={`chatbot-button ${isOpen ? 'chatbot-button-open' : ''} ${isMinimized ? 'chatbot-button-minimized' : ''}`}
       onClick={onClick}
-      aria-label={isOpen ? 'Close chat' : 'Open chat'}
-      title={isOpen ? 'Close chat' : 'Ask AI Assistant'}
+      aria-label={isOpen ? 'Close chat' : isMinimized ? 'Restore chat' : 'Open chat'}
+      title={isOpen ? 'Close chat' : isMinimized ? 'Restore chat' : 'Ask AI Assistant'}
     >
       {isOpen ? (
         // Close icon (X)
@@ -38,11 +39,14 @@ const ChatButton: React.FC<ChatButtonProps> = ({ onClick, isOpen }) => {
         </svg>
       ) : (
         // Robot image
-        <img
-          src={robotImage}
-          alt="AI Assistant"
-          className="chatbot-button-image"
-        />
+        <>
+          <img
+            src={robotImage}
+            alt="AI Assistant"
+            className="chatbot-button-image"
+          />
+          {isMinimized && <span className="chatbot-button-badge">1</span>}
+        </>
       )}
     </button>
   );
