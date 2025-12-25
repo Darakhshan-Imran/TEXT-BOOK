@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "موجودہ",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Part I: Foundations": {
+    "message": "حصہ اول: بنیادی تصورات",
+    "description": "The label for category 'Part I: Foundations' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part II: ROS 2 & Python": {
+    "message": "حصہ دوم: ROS 2 اور Python",
+    "description": "The label for category 'Part II: ROS 2 & Python' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part III: Simulation": {
+    "message": "حصہ سوم: سمولیشن",
+    "description": "The label for category 'Part III: Simulation' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part IV: Isaac": {
+    "message": "حصہ چہارم: Isaac",
+    "description": "The label for category 'Part IV: Isaac' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part V: VLA": {
+    "message": "حصہ پنجم: VLA",
+    "description": "The label for category 'Part V: VLA' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part VI: Deployment": {
+    "message": "حصہ ششم: تعیناتی",
+    "description": "The label for category 'Part VI: Deployment' in sidebar 'tutorialSidebar'"
+  }
+}

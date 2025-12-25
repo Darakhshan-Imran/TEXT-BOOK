@@ -18,7 +18,29 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ur', 'zh', 'fr'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl',
+        htmlLang: 'ur-PK',
+      },
+      zh: {
+        label: '中文',
+        direction: 'ltr',
+        htmlLang: 'zh-CN',
+      },
+      fr: {
+        label: 'Français',
+        direction: 'ltr',
+        htmlLang: 'fr-FR',
+      },
+    },
   },
 
 
@@ -27,7 +49,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          routeBasePath: '/docs',
+          routeBasePath: 'docs',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/Darakhshan-Imran/TEXT-BOOK/tree/main/',
         },
@@ -54,14 +76,13 @@ const config: Config = {
           position: 'left',
         },
         {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
           type: 'custom-authNavbarItem',
           position: 'right',
         },
-        // {
-        //   href: 'https://github.com/Darakhshan-Imran/TEXT-BOOK',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
       ],
     },
     footer: {

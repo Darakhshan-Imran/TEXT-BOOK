@@ -1,0 +1,10 @@
+{
+  "label": "Part II: ROS 2 - The Robotic Nervous System",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Master ROS 2 for robot control and communication",
+    "slug": "/part-2-ros2"
+  },
+  "collapsed": false
+}

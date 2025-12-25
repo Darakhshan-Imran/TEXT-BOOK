@@ -1,0 +1,10 @@
+{
+  "title": {
+    "message": "Physical AI & Humanoid Robotics",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Physical AI Logo",
+    "description": "The alt text of navbar logo"
+  }
+}

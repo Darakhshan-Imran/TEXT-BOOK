@@ -1,0 +1,10 @@
+{
+  "label": "Part V: Vision-Language-Action",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "When robots understand natural language",
+    "slug": "/part-5-vla"
+  },
+  "collapsed": false
+}

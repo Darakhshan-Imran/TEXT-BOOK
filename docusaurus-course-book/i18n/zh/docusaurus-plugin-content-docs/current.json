@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Part I: Foundations": {
+    "message": "Part I: Foundations",
+    "description": "The label for category 'Part I: Foundations' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part II: ROS 2 & Python": {
+    "message": "Part II: ROS 2 & Python",
+    "description": "The label for category 'Part II: ROS 2 & Python' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part III: Simulation": {
+    "message": "Part III: Simulation",
+    "description": "The label for category 'Part III: Simulation' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part IV: Isaac": {
+    "message": "Part IV: Isaac",
+    "description": "The label for category 'Part IV: Isaac' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part V: VLA": {
+    "message": "Part V: VLA",
+    "description": "The label for category 'Part V: VLA' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Part VI: Deployment": {
+    "message": "Part VI: Deployment",
+    "description": "The label for category 'Part VI: Deployment' in sidebar 'tutorialSidebar'"
+  }
+}
